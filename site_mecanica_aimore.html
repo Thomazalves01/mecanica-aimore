@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d0d0f">
+  <meta name="description" content="Mecânica Aimoré — Atendimento e manutenção automotiva de excelência. Consulte serviços e solicite orçamento pelo WhatsApp ou Instagram.">
+  <title>Mecânica Aimoré | Atendimento e Manutenção Automotiva</title>
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --panel: #151518;
+      --panel-hover: #1c1c21;
+      --text: #f4f4f6;
+      --muted: #a1a1aa;
+      --accent: #e50914; /* Vermelho principal */
+      --accent-hover: #ff2e37;
+      --accent-glow: rgba(229, 9, 20, 0.25);
+      --line: #26262a;
+      --line-red: #421215;
+      --green: #25d366;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, 92%); margin: auto; }
+
+    /* Header e Navegação */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(13, 13, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      background: var(--accent);
+      color: #ffffff;
+      border-radius: 10px;
+      font-size: 22px;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text span { font-size: 18px; font-weight: 800; color: #fff; }
+    .brand small {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+    }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .navlinks a:hover { color: var(--accent-hover); transition: color 0.2s; }
+    
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    /* Botões */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-red {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-red:hover { background: var(--accent-hover); }
+    .btn-wa {
+      background: var(--green);
+      color: #07150b;
+      font-weight: 800;
+    }
+    .btn-wa:hover { background: #22c35e; }
+    .btn-outline {
+      border-color: #3f3f46;
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-insta {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 76px 0 66px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    h1 {
+      font-size: clamp(38px, 5.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 16px 0 20px;
+      font-weight: 900;
+    }
+    h1 span { color: var(--accent); }
+    .lead { color: var(--muted); font-size: 18px; max-width: 550px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    .hero-photo {
+      min-height: 420px;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line-red);
+      background: #18181b;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+      transition: transform 0.4s ease;
+    }
+    .hero-photo:hover img { transform: scale(1.03); }
+    .photo-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 18px;
+      background: rgba(13, 13, 15, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      border-radius: 12px;
+    }
+    .photo-label strong { font-size: 18px; color: #fff; display: block; }
+    .photo-label p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* Trust / Destaques */
+    .trust {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #111113;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 24px 0;
+    }
+    .trust-item {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .trust-item b { display: block; color: var(--text); font-size: 15px; }
+    .icon {
+      font-size: 24px;
+      color: var(--accent);
+      background: rgba(229, 9, 20, 0.1);
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(229, 9, 20, 0.2);
+    }
+
+    /* Seções */
+    section { padding: 72px 0; }
+    .section-head { max-width: 650px; margin-bottom: 36px; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.1; margin: 10px 0; font-weight: 800; }
+    .section-head p { color: var(--muted); font-size: 16px; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      background: var(--panel-hover);
+      border-color: rgba(229, 9, 20, 0.4);
+      transform: translateY(-4px);
+    }
+    .card .symbol {
+      font-size: 28px;
+      background: rgba(229, 9, 20, 0.12);
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border: 1px solid rgba(229, 9, 20, 0.2);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 20px; font-weight: 700; }
+    .card p { color: var(--muted); font-size: 14px; margin: 0; line-height: 1.5; }
+
+    /* Galeria */
+    .gallery { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #18181b;
+    }
+    .gallery img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery .stack { display: grid; gap: 18px; }
+    .gallery .stack img { height: 136px; }
+
+    .insta-banner {
+      margin-top: 24px;
+      background: rgba(229, 9, 20, 0.08);
+      border: 1px solid rgba(229, 9, 20, 0.25);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .insta-banner p { margin: 0; font-size: 14px; color: var(--text); }
+    .insta-banner b { color: var(--accent); }
+
+    .notice { font-size: 12px; color: var(--muted); margin-top: 14px; }
+
+    /* CTA Section */
+    .cta { padding: 0 0 72px; }
+    .cta-box {
+      border-radius: 18px;
+      padding: 42px;
+      background: linear-gradient(135deg, #2a0a0d 0%, #151518 100%);
+      border: 1px solid var(--line-red);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 10px 30px rgba(229, 9, 20, 0.1);
+    }
+    .cta-box h2 { font-size: clamp(26px, 4vw, 38px); margin: 0 0 8px; font-weight: 800; }
+    .cta-box p { color: var(--muted); margin: 0; font-size: 16px; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 14px;
+      background: #09090b;
+    }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .foot-social { display: flex; gap: 16px; align-items: center; }
+    .foot-social a:hover { color: var(--accent); }
+
+    /* Responsividade */
+    @media(max-width: 760px) {
+      .navlinks { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 28px; }
+      .hero-photo, .hero-photo img { min-height: 280px; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery img { height: 220px; }
+      .gallery .stack img { height: 180px; }
+      .cta-box { display: block; padding: 28px; }
+      .cta-box .btn { margin-top: 20px; width: 100%; }
+      .insta-banner { flex-direction: column; text-align: center; }
+      section { padding: 54px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#inicio">
+        <span class="mark">⚙</span>
+        <div class="brand-text">
+          <span>MECÂNICA AIMORÉ</span>
+          <small>ATENDIMENTO AUTOMOTIVO</small>
+        </div>
+      </a>
+      <div class="navlinks">
+        <a href="#servicos">Serviços</a>
+        <a href="#estrutura">Estrutura</a>
+        <a href="#contato">Contato</a>
+        <a href="https://instagram.com/mecanica_aimore" target="_blank" rel="noopener">@mecanica_aimore</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-red whatsapp-link" href="#contato">Falar com a oficina ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO SECTION -->
+  <div class="wrap hero" id="inicio">
+    <div>
+      <div class="eyebrow">Cuidado e Especialidade Automotiva</div>
+      <h1>Seu carro em boas mãos para <span>seguir em frente.</span></h1>
+      <p class="lead">Atendimento transparente, diagnóstico preciso e manutenção preventiva de alto padrão para o seu veículo na Mecânica Aimoré.</p>
+      <div class="actions">
+        <a class="btn btn-wa whatsapp-link" href="#contato">◉ Consultar no WhatsApp</a>
+        <a class="btn btn-outline" href="#servicos">Conhecer serviços ↓</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <!-- Imagem confiável com fallback automático em caso de falha de carregamento -->
+      <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80" 
+           alt="Oficina mecânica profissional - Mecânica Aimoré" 
+           onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80';">
+      <div class="photo-label">
+        <strong>Atendimento Direto e Rápido</strong>
+        <p>Fale diretamente com nossa equipe e agende uma avaliação do seu veículo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESTAQUES -->
+  <div class="trust">
+    <div class="wrap trust-grid">
+      <div class="trust-item">
+        <span class="icon">⚙</span>
+        <span><b>Serviços Multimarcas</b>Manutenção preventiva e corretiva completa</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon">◷</span>
+        <span><b>Atendimento Ágil</b>Agendamento prático pelo WhatsApp</span>
+      </div>
+      <div class="trust-item">
+        <span class="icon">⌖</span>
+        <span><b>Siga no Instagram</b>Confira nossos trabalhos no @mecanica_aimore</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Como Podemos Ajudar</div>
+        <h2>Soluções completas para a manutenção do seu carro</h2>
+        <p>Entre em contato para consultar disponibilidade, valores e tirar suas dúvidas técnicas.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="symbol">🔧</div>
+          <h3>Manutenção Preventiva</h3>
+          <p>Troca de óleo, filtros, correias, freios e suspensão para manter seu carro sempre seguro.</p>
+        </article>
+        <article class="card">
+          <div class="symbol">💻</div>
+          <h3>Diagnóstico Eletrônico</h3>
+          <p>Identificação precisa de falhas via scanner no sistema de injeção e eletrônica embarcada.</p>
+        </article>
+        <article class="card">
+          <div class="symbol">💬</div>
+          <h3>Orçamento sem Compromisso</h3>
+          <p>Envie sua dúvida pelo WhatsApp e combine uma avaliação detalhada com a nossa equipe.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTRUTURA E GALERIA -->
+  <section id="estrutura" style="background:#111113; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Nossa Oficina</div>
+        <h2>Espaço equipado e pronto para o seu veículo</h2>
+        <p>Confira fotos do dia a dia da oficina. Acompanhe também as novidades no nosso perfil oficial.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80" 
+               alt="Oficina Mecânica Aimoré - Manutenção de veículos" 
+               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80';">
+        </div>
+        <div class="stack">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" 
+                 alt="Ferramentas e Peças Automotivas" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1613214150384-5d3b7e4b3e3b?auto=format&fit=crop&w=900&q=80';">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80" 
+                 alt="Mecânico em ação" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?auto=format&fit=crop&w=900&q=80';">
+          </div>
+        </div>
+      </div>
+
+      <div class="insta-banner">
+        <p>📸 Para ver fotos reais dos serviços e bastidores, visite nosso Instagram: <b>@mecanica_aimore</b></p>
+        <a href="https://instagram.com/mecanica_aimore" target="_blank" rel="noopener" class="btn btn-insta">Acessar Instagram ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION / CONTATO -->
+  <section class="cta" id="contato">
+    <div class="wrap">
+      <div class="cta-box">
+        <div>
+          <div class="eyebrow">Entre em Contato</div>
+          <h2>Precisa de manutenção ou orçamento?</h2>
+          <p>Clique no botão ao lado para falar diretamente com a equipe da Mecânica Aimoré pelo WhatsApp.</p>
+        </div>
+        <a class="btn btn-wa whatsapp-link" href="#contato">Abrir WhatsApp ↗</a>
+      </div>
+      <p class="notice">💡 Dica de publicação: substitua as fotos ilustrativas por fotos reais baixadas do Instagram da oficina.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <span>© <span id="year"></span> <b>Mecânica Aimoré</b>. Todos os direitos reservados.</span>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/mecanica_aimore" target="_blank" rel="noopener">Instagram: <b>@mecanica_aimore</b></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // IMPORTANTE: Insira o número oficial do WhatsApp com DDD (apenas números, ex: 555199699034)
+  const whatsappNumber = "555199699034";
+  const message = "Olá! Vi o site da Mecânica Aimoré e gostaria de solicitar um orçamento/informações.";
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll(".whatsapp-link").forEach(link => {
+    link.addEventListener("click", function(event) {
+      if (!/^\d{12,13}$/.test(whatsappNumber)) {
+        event.preventDefault();
+        alert("Por favor, configure o número de WhatsApp oficial no código JavaScript.");
+        return;
+      }
+      event.preventDefault();
+      window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message), "_blank", "noopener");
+    });
+  });
+</script>
+</body>
+</html>
